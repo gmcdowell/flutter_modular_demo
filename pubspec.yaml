@@ -22,6 +22,9 @@ environment:
 
 dependencies:
   flutter_modular: any
+  abstract_widget_view:
+    git: https://github.com/gmcdowell/abstract_widget_view.git
+
   flutter:
     sdk: flutter
 

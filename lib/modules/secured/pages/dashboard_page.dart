@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class DashboardPage extends StatefulWidget {
-  /// route below module.routePath e.g. '/secured/'
-  static const String routePath = '/secured';
-
   @override
   _DashboardPageController createState() => _DashboardPageController();
 }
@@ -16,8 +13,11 @@ class _DashboardPageController extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
+
+    _selectedIndex = 0;
   }
 
+  /// Redirects to 'relative tab paths'
   void _updateDestinationSelected(int index) {
     if (index == 0) {
       Modular.to.navigate(FirstTabPage.routePath);
@@ -45,9 +45,7 @@ class _DashboardPageView
     return Scaffold(
       appBar: AppBar(
         title: Text('Modular:Secured area'),
-        leading: CloseButton(
-          onPressed: () => Modular.to.pop(),
-        ),
+        leading: CloseButton(onPressed: () => Modular.to.navigate('/')),
       ),
       body: Row(
         children: <Widget>[
@@ -76,9 +74,7 @@ class _DashboardPageView
           const VerticalDivider(thickness: 1, width: 1),
           // This is the main content.
           Expanded(
-            child: Center(
-              child: RouterOutlet(),
-            ),
+            child: RouterOutlet(),
           )
         ],
       ),
@@ -133,7 +129,11 @@ class _SecondTabPageView
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('second'),
+      child: Center(
+          child: Text(
+        'second',
+        style: Theme.of(context).textTheme.headline6,
+      )),
     );
   }
 }
@@ -157,7 +157,11 @@ class _ThirdTabPageView
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('third'),
+      child: Center(
+          child: Text(
+        'third',
+        style: Theme.of(context).textTheme.headline6,
+      )),
     );
   }
 }

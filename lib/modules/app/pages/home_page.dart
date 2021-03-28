@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:abstract_widget_view/abstract_widget_view.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_demo/modules/app/pages/login_page.dart';
-import 'package:flutter_modular_demo/modules/secured/secured_module.dart';
+import 'package:flutter_modular_demo/modules/secured/secured_widget_module.dart';
+// import 'package:flutter_modular_demo/modules/secured/secured_module.dart';
 
 class HomePage extends StatefulWidget {
   static const String routePath = '/';
@@ -34,7 +35,7 @@ class _HomePageView extends WidgetView<HomePage, _HomePageController> {
 
           // content
           ElevatedButton(
-            onPressed: () => Modular.to.pushNamed(SecuredModule.routePath),
+            onPressed: () => Modular.to.navigate(SecuredModule.initialPath),
             child: Text(
               'Secured',
             ),

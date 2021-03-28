@@ -5,6 +5,7 @@ import 'package:flutter_modular_demo/modules/secured/pages/dashboard_page.dart';
 // ignore: must_be_immutable
 class SecuredModule extends WidgetModule {
   static const String routePath = '/secured';
+  static const String initialPath = '$routePath/${FirstTabPage.routePath}';
 
   @override
   List<Bind<Object>> get binds => [];

@@ -9,6 +9,27 @@ class SecuredModule extends WidgetModule {
   @override
   List<Bind<Object>> get binds => [];
 
+  final List<ModularRoute> routes = [
+    ChildRoute(
+      '/',
+      child: (_, args) => DashboardPage(),
+      children: [
+        ChildRoute(
+          FirstTabPage.routePath,
+          child: (_, __) => FirstTabPage(),
+        ),
+        ChildRoute(
+          SecondTabPage.routePath,
+          child: (_, __) => SecondTabPage(),
+        ),
+        ChildRoute(
+          ThirdTabPage.routePath,
+          child: (_, __) => ThirdTabPage(),
+        ),
+      ],
+    ),
+  ];
+
   @override
   Widget get view => DashboardPage();
 }

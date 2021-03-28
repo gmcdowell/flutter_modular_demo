@@ -4,11 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class DashboardPage extends StatefulWidget {
   /// route below module.routePath e.g. '/secured/'
-  static const String routePath = '/';
-
-  // final String currentIndex;
-
-  // DashboardPage([this.currentIndex = '0']);
+  static const String routePath = '/secured';
 
   @override
   _DashboardPageController createState() => _DashboardPageController();
@@ -20,15 +16,20 @@ class _DashboardPageController extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
-
-    // _selectedIndex = int.parse(widget.currentIndex);
   }
 
   void _updateDestinationSelected(int index) {
+    if (index == 0) {
+      Modular.to.navigate(FirstTabPage.routePath);
+    } else if (index == 1) {
+      Modular.to.navigate(SecondTabPage.routePath);
+    } else if (index == 2) {
+      Modular.to.navigate(ThirdTabPage.routePath);
+    }
+
     setState(() {
       _selectedIndex = index;
     });
-    // Modular.to.pushReplacementNamed('$index');
   }
 
   @override
@@ -43,7 +44,7 @@ class _DashboardPageView
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Modular:Stuff'),
+        title: Text('Modular:Secured area'),
         leading: CloseButton(
           onPressed: () => Modular.to.pop(),
         ),
@@ -76,11 +77,87 @@ class _DashboardPageView
           // This is the main content.
           Expanded(
             child: Center(
-              child: Text('selectedIndex: ${state._selectedIndex}'),
+              child: RouterOutlet(),
             ),
           )
         ],
       ),
+    );
+  }
+}
+
+class FirstTabPage extends StatefulWidget {
+  static const String routePath = 'first';
+
+  @override
+  _FirstTabPageController createState() => _FirstTabPageController();
+}
+
+class _FirstTabPageController extends State<FirstTabPage> {
+  @override
+  Widget build(BuildContext context) => _FirstTabPageView(this);
+}
+
+class _FirstTabPageView
+    extends WidgetView<FirstTabPage, _FirstTabPageController> {
+  _FirstTabPageView(_FirstTabPageController state) : super(state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+          child: Text(
+        'first',
+        style: Theme.of(context).textTheme.headline6,
+      )),
+    );
+  }
+}
+
+class SecondTabPage extends StatefulWidget {
+  static const String routePath = 'second';
+
+  @override
+  _SecondTabPageController createState() => _SecondTabPageController();
+}
+
+class _SecondTabPageController extends State<SecondTabPage> {
+  @override
+  Widget build(BuildContext context) => _SecondTabPageView(this);
+}
+
+class _SecondTabPageView
+    extends WidgetView<SecondTabPage, _SecondTabPageController> {
+  _SecondTabPageView(_SecondTabPageController state) : super(state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('second'),
+    );
+  }
+}
+
+class ThirdTabPage extends StatefulWidget {
+  static const String routePath = 'third';
+
+  @override
+  _ThirdTabPageController createState() => _ThirdTabPageController();
+}
+
+class _ThirdTabPageController extends State<ThirdTabPage> {
+  @override
+  Widget build(BuildContext context) => _ThirdTabPageView(this);
+}
+
+class _ThirdTabPageView
+    extends WidgetView<ThirdTabPage, _ThirdTabPageController> {
+  _ThirdTabPageView(_ThirdTabPageController state) : super(state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text('third'),
     );
   }
 }

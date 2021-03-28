@@ -10,26 +10,19 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        /// root
+        /// '/'
         ChildRoute(
           HomePage.routePath,
           child: (_, __) => HomePage(),
         ),
 
-        /// login
+        /// '/login'
         ChildRoute(
           LoginPage.routePath,
           child: (_, __) => LoginPage(),
         ),
 
-        /// secured
-        // ModuleRoute(
-        //   SecuredModule.routePath,
-        //   module: SecuredModule(),
-        //   transition: TransitionType.fadeIn,
-        // ),
-
-        /// secured (WidgetModule)
+        /// '/secured'
         ModuleRoute(
           SecuredModule.routePath,
           module: SecuredModule(),

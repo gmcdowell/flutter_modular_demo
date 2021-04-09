@@ -33,4 +33,15 @@ class SecuredModule extends WidgetModule {
 
   @override
   Widget get view => DashboardPage();
+
+  @override
+  T? getInjectedBind<T>([Type? type]) {
+    // TODO: implement getInjectedBind
+    // throw UnimplementedError();
+    return null;
+  }
+
+  @override
+  // TODO: implement imports
+  List<Module> get imports => [];
 }
